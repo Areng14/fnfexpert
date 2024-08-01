@@ -56,7 +56,10 @@ class Spooky extends BaseStage
 
 		if(boyfriend.animOffsets.exists('scared')) {
 			boyfriend.playAnim('scared', true);
-			PLayState.instance.health =- 0.1;
+		}
+
+		if (PlayState.storyDifficulty >= 3) {
+			PlayState.instance.health =- 0.25;
 			doDeathCheck(true);
 		}
 
