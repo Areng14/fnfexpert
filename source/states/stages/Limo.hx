@@ -269,7 +269,7 @@ class Limo extends BaseStage
 			}
 		}
 
-		if (PlayState.storyDifficulty >= 3) {
+		if (PlayState.storyDifficulty >= 3 && PlayState.instance.health > 0.1) {
 			PlayState.instance.health = 0.1;
 			PlayState.instance.updateScore();
 		}
