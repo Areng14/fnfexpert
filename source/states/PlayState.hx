@@ -264,6 +264,9 @@ class PlayState extends MusicBeatState
 	public var startCallback:Void->Void = null;
 	public var endCallback:Void->Void = null;
 
+	//healthdrain
+	public var healthdrain:Bool = false;
+
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -2958,6 +2961,10 @@ class PlayState extends MusicBeatState
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHit', [note]);
 
 		if (!note.isSustainNote) invalidateNote(note);
+
+		if (healthdrain) {
+			PlayState.instance.health -= 0.05;
+		}
 	}
 
 	public function goodNoteHit(note:Note):Void

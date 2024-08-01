@@ -1,5 +1,6 @@
 package states.stages;
 
+import states.PlayState;
 import states.stages.objects.*;
 
 class MallEvil extends BaseStage
@@ -24,6 +25,8 @@ class MallEvil extends BaseStage
 			switch(songName)
 			{
 				case 'winter-horrorland':
+					//set healthdrain on
+					PlayState.instance.healthdrain = true;
 					setStartCallback(winterHorrorlandCutscene);
 			}
 		}
