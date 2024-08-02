@@ -30,7 +30,7 @@ class MallEvil extends BaseStage
 			}
 		}
 
-		if (PlayState.instance.storyDifficulty >= 3) {
+		if (PlayState.storyDifficulty >= 3) {
 			switch(songName)
 			{
 				case 'winter-horrorland':

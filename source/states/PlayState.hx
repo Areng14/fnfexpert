@@ -1921,6 +1921,8 @@ class PlayState extends MusicBeatState
 		{
 			var ret:Dynamic = callOnScripts('onGameOver', null, true);
 			if(ret != LuaUtils.Function_Stop) {
+				PlayState.instance.healthdrain = false;
+				//turn off healthdrain
 				FlxG.animationTimeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
@@ -2279,6 +2281,9 @@ class PlayState extends MusicBeatState
 	{
 		updateTime = false;
 		FlxG.sound.music.volume = 0;
+
+		PlayState.instance.healthdrain = false;
+		//stop healthdrain
 
 		vocals.volume = 0;
 		vocals.pause();
