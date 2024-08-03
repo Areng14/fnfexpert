@@ -249,12 +249,12 @@ class TitleState extends MusicBeatState
 					"gfDanceTitle",
 					"dadTitle",
 					"spookyTitle",
-					"monsterTitle",
-					"picoTitle",
-					"momTitle",
-					"senpaiTitle",
-					"spiritTitle",
-					"tankmanTitle",
+					//"monsterTitle",
+					//"picoTitle",
+					//"momTitle",
+					//"senpaiTitle",
+					//"spiritTitle",
+					//"tankmanTitle",
 				];
 
 				var index:Int = FlxG.random.int(0, titlechars.length - 1);
