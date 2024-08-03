@@ -266,7 +266,10 @@ class PlayState extends MusicBeatState
 
 	//healthdrain
 	public var healthdrain:Bool = false;
-	public var healthdrainamount = 2;
+	public var healthdrainamount = 0.5;
+
+	//track notehit
+	public var yn_notehit:Bool = false;
 
 	override public function create()
 	{
@@ -1924,6 +1927,7 @@ class PlayState extends MusicBeatState
 			if(ret != LuaUtils.Function_Stop) {
 				PlayState.instance.healthdrain = false;
 				//turn off healthdrain
+				yn_notehit = false;
 				FlxG.animationTimeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
@@ -2284,6 +2288,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.volume = 0;
 
 		PlayState.instance.healthdrain = false;
+		yn_notehit = false;
 		//stop healthdrain
 
 		vocals.volume = 0;
@@ -2329,6 +2334,10 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+
+		PlayState.instance.healthdrain = false;
+		yn_notehit = false;
+		//end shit
 
 		deathCounter = 0;
 		seenCutscene = false;
@@ -2925,6 +2934,9 @@ class PlayState extends MusicBeatState
 		var result:Dynamic = callOnLuas('opponentNoteHitPre', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHitPre', [note]);
 
+		yn_notehit = true;
+		//set notehit to be true because its true lol
+
 		if (songName != 'tutorial')
 			camZooming = true;
 
@@ -2977,6 +2989,7 @@ class PlayState extends MusicBeatState
 
 	public function goodNoteHit(note:Note):Void
 	{
+		yn_notehit = true;
 		if(note.wasGoodHit) return;
 		if(cpuControlled && note.ignoreNote) return;
 
