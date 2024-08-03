@@ -266,6 +266,7 @@ class PlayState extends MusicBeatState
 
 	//healthdrain
 	public var healthdrain:Bool = false;
+	public var healthdrainamount = 2;
 
 	override public function create()
 	{
@@ -2968,7 +2969,8 @@ class PlayState extends MusicBeatState
 		if (!note.isSustainNote) invalidateNote(note);	
 
 		if (PlayState.instance.healthdrain) {
-			PlayState.instance.health -= 0.005;
+			PlayState.instance.health -= PlayState.instance.healthdrainamount * 0.02;
+			updateScore();
 		}
 	
 	}
