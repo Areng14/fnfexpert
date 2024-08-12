@@ -250,7 +250,7 @@ class TitleState extends MusicBeatState
 					"dadTitle",
 					"spookyTitle",
 					"monsterTitle",
-					//"picoTitle",
+					"picoTitle",
 					//"momTitle",
 					//"senpaiTitle",
 					//"spiritTitle",

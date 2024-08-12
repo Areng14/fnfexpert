@@ -2980,7 +2980,7 @@ class PlayState extends MusicBeatState
 
 		if (!note.isSustainNote) invalidateNote(note);	
 
-		if (PlayState.instance.healthdrain) {
+		if (PlayState.instance.healthdrain && PlayState.instance.health > 0.01) {
 			PlayState.instance.health -= PlayState.instance.healthdrainamount * 0.02;
 			updateScore();
 		}
@@ -3550,7 +3550,7 @@ class PlayState extends MusicBeatState
 			}
 			else // any FC achievements, name should be "weekFileName_nomiss", e.g: "week3_nomiss";
 			{
-				if(isStoryMode && campaignMisses + songMisses < 1 && Difficulty.getString().toUpperCase() == 'HARD'
+				if(isStoryMode && campaignMisses + songMisses < 1 && Difficulty.getString().toUpperCase() == 'EXPERT'
 					&& storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
 					unlock = true;
 			}
